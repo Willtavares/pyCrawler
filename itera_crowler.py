@@ -15,7 +15,6 @@ driver = webdriver.Chrome('C:/Users/William/Downloads/chromedriver_win32/chromed
 ulr_adicao = [ str(i) + j for i in especializacoes for j in max_page_num]
 for i in range(len(ulr_adicao)):
     url = "https://www.doctoralia.com.br/"+ ulr_adicao[i]
-    print(url)
     driver.get(url)
 
     nome = driver.find_elements_by_xpath('//div[@class="col-xs-9 col-sm-10  col-md-9 content"]//h3[@class="rank-element-name h4 padding-right-2"]//span[@itemprop="name"]')
@@ -28,7 +27,6 @@ for i in range(len(ulr_adicao)):
     with open('coleta.csv', 'a') as f:
         while i < number_pag_itens:
             f.write(nome[i].text + "," + especialidade[i].text + "," + rua[i].text + "," + cidade[i].text + "\n")
-            i += 1
-            print("Printando o I: " + str(i))    
+            i += 1   
             
 driver.close()
